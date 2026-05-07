@@ -9,9 +9,12 @@ from alembic import command
 import os
 
 def run_migrations():
-    if os.environ.get("ENVIRONMENT") == "production":
-        alembic_cfg = Config("alembic.ini")
-        command.upgrade(alembic_cfg, "head")
+    try:
+        if os.environ.get("ENVIRONMENT") == "production":
+            alembic_cfg = Config("alembic.ini")
+            command.upgrade(alembic_cfg, "head")
+    except Exception as e:
+        print(f"Migration failed (non-fatal): {e}")
 
 run_migrations()
 
