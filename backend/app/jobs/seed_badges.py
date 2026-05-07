@@ -1,10 +1,10 @@
--- =============================================================================
--- backend/app/jobs/seed_badges.py equivalent — run once after alembic upgrade head
--- Or paste into psql directly.
--- =============================================================================
--- 
--- Run via: python -m app.jobs.seed_badges
--- =============================================================================
+# =============================================================================
+# backend/app/jobs/seed_badges.py equivalent — run once after alembic upgrade head
+# Or paste into psql directly.
+# =============================================================================
+# 
+# Run via: python -m app.jobs.seed_badges
+# =============================================================================
 
 """
 backend/app/jobs/seed_badges.py
