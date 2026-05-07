@@ -4,6 +4,16 @@ backend/app/main.py
 FastAPI application entry point.
 Registers all routers, CORS middleware, lifespan events.
 """
+from alembic.config import Config
+from alembic import command
+import os
+
+def run_migrations():
+    if os.environ.get("ENVIRONMENT") == "production":
+        alembic_cfg = Config("alembic.ini")
+        command.upgrade(alembic_cfg, "head")
+
+run_migrations()
 
 from contextlib import asynccontextmanager
 
