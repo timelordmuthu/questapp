@@ -35,7 +35,7 @@ async def login(data: LoginRequest, request: Request, response: Response, db: As
 async def logout(request: Request, response: Response, db: AsyncSession = Depends(get_db)):
     raw_token = request.cookies.get("session_token", "")
     await auth_service.logout_user(raw_token, db)
-    response.delete_cookie("session_token")
+    response.delete_cookie("session_token", httponly=True, secure=True, samesite="none")
 
 
 @router.post("/forgot-password", status_code=204)

@@ -125,8 +125,8 @@ async def login_user(
         key="session_token",
         value=raw_token,
         httponly=True,
-        secure=settings.is_production,
-        samesite="lax",
+        secure=True,             # must be True for samesite=none
+        samesite="none",         # ← allows cross-origin
         max_age=settings.session_ttl_seconds,
     )
 
